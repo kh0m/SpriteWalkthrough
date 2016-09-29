@@ -8,8 +8,17 @@
 
 #import "SpriteViewController.h"
 #import "SpriteMyScene.h"
+#import "SpriteKit/SpriteKit.h"
+#import "SpriteHelloScene.h"
 
 @implementation SpriteViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    SpriteHelloScene *hello = [[SpriteHelloScene alloc] initWithSize:CGSizeMake(768, 1024)];
+    SKView *spriteView = (SKView *) self.view;
+    [spriteView presentScene: hello];
+}
 
 - (void)viewDidLoad
 {
@@ -19,6 +28,7 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    skView.showsDrawCount = YES;
     
     // Create and configure the scene.
     SKScene * scene = [SpriteMyScene sceneWithSize:skView.bounds.size];
